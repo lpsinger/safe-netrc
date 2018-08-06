@@ -19,6 +19,7 @@ dist:
 # Template for test stage jobs
 .test: &test
   stage: test
+  coverage: '/^TOTAL\s+.*\s+(\d+\.?\d*)%/'
   variables:
     GIT_STRATEGY: none
   before_script:
@@ -32,6 +33,62 @@ lint:
   script:
     - pip install flake8
     - flake8 --show-source .
+
+# Unit tests for Python 2.7
+test:2.7:
+  <<: *test
+  image: python:2.7
+  script:
+    - pip install pytest-cov
+    - python setup.py test --addopts='-vv --cov'
+
+# Unit tests for Python 3.4
+test:3.4:
+  <<: *test
+  image: python:3.4-slim
+  script:
+    - pip install pytest-cov
+    - python setup.py test --addopts='-vv --cov'
+
+# Unit tests for Python 3.5
+test:3.5:
+  <<: *test
+  image: python:3.5-slim
+  script:
+    - pip install pytest-cov
+    - python setup.py test --addopts='-vv --cov'
+
+# Unit tests for Python 3.6
+test:3.6:
+  <<: *test
+  image: python:3.6-slim
+  script:
+    - pip install pytest-cov
+    - python setup.py test --addopts='-vv --cov'
+
+# Unit tests for Python 3.7
+test:3.7:
+  <<: *test
+  image: python:3.7-slim
+  script:
+    - pip install pytest-cov
+    - python setup.py test --addopts='-vv --cov --cov-report=html --cov-report=term'
+  artifacts:
+    paths:
+      - htmlcov/
+    expire_in: 1 hour
+
+# Publish coverage
+pages:
+  stage: deploy
+  script:
+    - mv htmlcov public/
+  artifacts:
+    paths:
+      - public
+    expire_in: 30 days
+  only:
+    - master
 
 # Upload package to PyPI
 pypi:
