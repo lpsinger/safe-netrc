@@ -19,7 +19,6 @@ dist:
 # Template for test stage jobs
 .test: &test
   stage: test
-  coverage: '/^TOTAL\s+.*\s+(\d+\.?\d*)%/'
   variables:
     GIT_STRATEGY: none
   before_script:
@@ -37,39 +36,36 @@ lint:
 # Unit tests for Python 2.7
 test:2.7:
   <<: *test
-  image: python:2.7
+  image: python:2.7-slim
   script:
-    - pip install pytest-cov
-    - python setup.py test --addopts='-vv --cov'
+    - python setup.py test --addopts='-vv'
 
 # Unit tests for Python 3.4
 test:3.4:
   <<: *test
   image: python:3.4-slim
   script:
-    - pip install pytest-cov
-    - python setup.py test --addopts='-vv --cov'
+    - python setup.py test --addopts='-vv'
 
 # Unit tests for Python 3.5
 test:3.5:
   <<: *test
   image: python:3.5-slim
   script:
-    - pip install pytest-cov
-    - python setup.py test --addopts='-vv --cov'
+    - python setup.py test --addopts='-vv'
 
 # Unit tests for Python 3.6
 test:3.6:
   <<: *test
   image: python:3.6-slim
   script:
-    - pip install pytest-cov
-    - python setup.py test --addopts='-vv --cov'
+    - python setup.py test --addopts='-vv'
 
-# Unit tests for Python 3.7
+# Unit tests for Python 3.7 (also test coverage)
 test:3.7:
   <<: *test
   image: python:3.7-slim
+  coverage: '/^TOTAL\s+.*\s+(\d+\.?\d*)%/'
   script:
     - pip install pytest-cov
     - python setup.py test --addopts='-vv --cov --cov-report=html --cov-report=term'
