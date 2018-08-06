@@ -1,0 +1,47 @@
+stages:
+  - dist
+  - test
+  - deploy
+
+image: python:slim
+
+# Build Python packages
+dist:
+  stage: dist
+  script:
+    - python setup.py sdist bdist_wheel
+    - mv dist/* .
+  artifacts:
+    paths:
+      - '*.tar.gz'
+      - '*.whl'
+
+# Template for test stage jobs
+.test: &test
+  stage: test
+  variables:
+    GIT_STRATEGY: none
+  before_script:
+    - tar --strip-components 1 -xf *.tar.*
+  dependencies:
+    - dist
+
+# Lint code
+lint:
+  <<: *test
+  script:
+    - pip install flake8
+    - flake8 --show-source .
+
+# Upload package to PyPI
+pypi:
+  stage: deploy
+  variables:
+    GIT_STRATEGY: none
+  script:
+    - pip install twine
+    - twine upload *.tar.* *.whl
+  dependencies:
+    - dist
+  only:
+    - tags@emfollow/safe-netrc
