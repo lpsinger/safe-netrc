@@ -6,7 +6,7 @@ import stat
 __all__ = ('netrc', 'NetrcParseError')
 
 
-class netrc(_netrc):
+class netrc(_netrc):  # noqa: N801
     """Subclass of the Python standard library :class:`~netrc.netrc` class to
     add some custom behaviors.
 
