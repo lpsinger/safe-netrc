@@ -1,3 +1,7 @@
+include:
+  - project: emfollow/gitlab-ci-templates
+    file: lint.yml
+
 stages:
   - dist
   - test
@@ -29,9 +33,6 @@ dist:
 # Lint code
 lint:
   <<: *test
-  script:
-    - pip install flake8
-    - flake8 --show-source .
 
 # Unit tests for Python 2.7
 test:2.7:
