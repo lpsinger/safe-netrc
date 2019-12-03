@@ -45,7 +45,7 @@ class netrc(_netrc):  # noqa: N801
                     file)
             if (prop.st_mode & (stat.S_IRWXG | stat.S_IRWXO)):
                 raise NetrcParseError(
-                   "~/.netrc access too permissive: access"
-                   " permissions must restrict access to only"
-                   " the owner", file)
+                    "~/.netrc access too permissive: access"
+                    " permissions must restrict access to only"
+                    " the owner", file)
         _netrc._parse(self, file, fp, *args, **kwargs)
