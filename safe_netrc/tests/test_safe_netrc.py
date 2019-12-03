@@ -31,14 +31,14 @@ def check(filename):
 
 
 def test_netrc_in_environ(monkeypatch, tmpdir):
-    """Check file specified by NETRC environment variable"""
+    """Check file specified by NETRC environment variable."""
     filename = str(tmpdir / 'netrc')
     monkeypatch.setenv('NETRC', filename)
     check(filename)
 
 
 def test_netrc_in_homedir(monkeypatch, tmpdir):
-    """Check file specified by home directory"""
+    """Check file specified by home directory."""
     filename = str(tmpdir / '.netrc')
     monkeypatch.setenv('HOME', str(tmpdir))
     check(filename)
