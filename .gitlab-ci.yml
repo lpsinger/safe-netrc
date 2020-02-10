@@ -66,10 +66,18 @@ test:3.6:
     - pip install pytest
     - python setup.py test --addopts='-vv'
 
-# Unit tests for Python 3.7 (also test coverage)
+# Unit tests for Python 3.7
 test:3.7:
   <<: *test
-  image: python:3.7-slim
+  image: python:3.6-slim
+  script:
+    - pip install pytest
+    - python setup.py test --addopts='-vv'
+
+# Unit tests for Python 3.8 (also test coverage)
+test:3.7:
+  <<: *test
+  image: python:3.8-slim
   coverage: '/^safe_netrc\/__init__\.py\s+.*\s+(\d+\.?\d*)%/'
   script:
     - pip install pytest-cov
