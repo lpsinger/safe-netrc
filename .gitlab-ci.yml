@@ -9,7 +9,7 @@ stages:
   - test
   - deploy
 
-image: python:slim
+image: python
 
 # Build Python packages
 dist:
