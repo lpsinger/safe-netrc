@@ -3,7 +3,11 @@ from netrc import NetrcParseError
 import os
 import stat
 
+from ._version import get_versions
+
 __all__ = ('netrc', 'NetrcParseError')
+__version__ = get_versions()['version']
+del get_versions
 
 
 class netrc(_netrc):  # noqa: N801
