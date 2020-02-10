@@ -39,7 +39,7 @@ lint:
 # Unit tests for Python 2.7
 test:2.7:
   <<: *test
-  image: python:2.7
+  image: python:2.7-slim
   script:
     - pip install pytest
     - python setup.py test --addopts='-vv'
@@ -77,7 +77,7 @@ test:3.7:
     - python setup.py test --addopts='-vv'
 
 # Unit tests for Python 3.8 (also test coverage)
-test:3.7:
+test:3.8:
   <<: *test
   image: python:3.8-slim
   coverage: '/^safe_netrc\/__init__\.py\s+.*\s+(\d+\.?\d*)%/'
