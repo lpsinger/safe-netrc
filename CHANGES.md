@@ -1,6 +1,6 @@
 # Changelog
 
-## 1.0.0 (unreleased)
+## 1.0.0 (2020-02-10)
 
 - This release fixes some minor lint and packaging issues, and updates the
   major version number to reflect the package's stable status.
