@@ -20,3 +20,11 @@ custom behaviors.
 ## Usage
 
     >>> from safe_netrc import netrc
+
+## Notes for software packaging
+
+Software packaging files exist for the following systems:
+
+- RPM: https://git.ligo.org/packaging/rhel/python-safe-netrc
+- Debian: https://git.ligo.org/packaging/debian/safe-netrc
+- Conda: https://github.com/conda-forge/safe-netrc-feedstock
