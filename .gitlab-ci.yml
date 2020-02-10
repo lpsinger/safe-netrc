@@ -99,6 +99,10 @@ pages:
   only:
     - master
 
+# SCCB request
+sccb:
+  stage: deploy
+
 # Upload package to PyPI
 pypi:
   stage: deploy
