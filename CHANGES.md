@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.0.1 (unreleased)
+
+- No changes yet.
+
 ## 1.0.0 (2020-02-10)
 
 - This release fixes some minor lint and packaging issues, and updates the
