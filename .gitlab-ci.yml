@@ -44,22 +44,6 @@ test:2.7:
     - pip install pytest
     - python setup.py test --addopts='-vv'
 
-# Unit tests for Python 3.4
-test:3.4:
-  <<: *test
-  image: python:3.4-slim
-  script:
-    - pip install pytest
-    - python setup.py test --addopts='-vv'
-
-# Unit tests for Python 3.5
-test:3.5:
-  <<: *test
-  image: python:3.5-slim
-  script:
-    - pip install pytest
-    - python setup.py test --addopts='-vv'
-
 # Unit tests for Python 3.6
 test:3.6:
   <<: *test
@@ -88,6 +72,14 @@ test:3.8:
     paths:
       - htmlcov/
     expire_in: 1 hour
+
+# Unit tests for Python 3.9
+test:3.9:
+  <<: *test
+  image: python:3.9-slim
+  script:
+    - pip install pytest
+    - python setup.py test --addopts='-vv'
 
 # Publish coverage
 pages:

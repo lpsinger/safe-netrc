@@ -2,7 +2,7 @@
 
 ## 1.0.1 (unreleased)
 
-- No changes yet.
+- Drop testing of Python 3.4 and 3.5, add testing of Python 3.9.
 
 ## 1.0.0 (2020-02-10)
 
