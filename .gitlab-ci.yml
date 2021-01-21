@@ -34,7 +34,10 @@ dist:
 
 # Lint code
 lint:
-  <<: *test
+  extends:
+    - .python:flake8
+  stage: test
+  dependencies: []
 
 # Unit tests for Python 2.7
 test:2.7:
